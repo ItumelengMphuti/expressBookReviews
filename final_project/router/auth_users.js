@@ -30,7 +30,7 @@ regd_users.post("/login", (req, res) => {
     // Create JWT token
     const token = jwt.sign({ username }, "fingerprint_customer", { expiresIn: "1h" });
 
-    return res.status(200).json({ message: `User '${username}' logged in successfully.`, token });
+    return res.status(200).json({ message: "Login successful!" });
 });
 
 // Add or modify a book review
