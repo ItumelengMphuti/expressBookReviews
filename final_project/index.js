@@ -10,8 +10,20 @@ app.use(express.json());
 
 app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}))
 
-app.use("/customer/auth/*", function auth(req,res,next){
-//Write the authenication mechanism here
+app.use("/customer/auth/*", function auth(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ message: "You must be logged in to add a review." });
+    }
+
+    const token = authHeader.split(' ')[1];
+    try {
+        const decoded = jwt.verify(token, "fingerprint_customer"); // same secret used in login
+        req.username = decoded.username; // save username for routes
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: "Invalid or expired token." });
+    }
 });
  
 const PORT =5000;

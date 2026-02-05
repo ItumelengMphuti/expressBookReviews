@@ -1,0 +1,4 @@
+theia@theia-itumeleng1mp:/home/project/expressBookReviews/fi
+nal_project$ curl -X PUT "http://localhost:5000/customer/auth/review/1?review=Amazing%20book!" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Iml0dW1lbGVuZyIsImlhdCI6MTc3MDI4Njg3MywiZXhwIjoxNzcwMjkwNDczfQ.jh4CdsFeHzGB28-xVNi075bzZWxIfZOrDutLoNTDuhU"
+{"message":"Review for book 'Things Fall Apart' by user 'itumeleng' added/updated successfully.","reviews":{"itumeleng":"Amazing book!"}}
